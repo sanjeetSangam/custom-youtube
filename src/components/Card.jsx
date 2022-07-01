@@ -4,25 +4,35 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 360px;
-  margin-bottom: 45px;
+  width: ${({ type }) => type !== "sm" && "360px"};
+  margin-bottom: ${({ type }) => (type === "sm" ? "10px" : "45px")};
   cursor: pointer;
+  z-index: 2;
+  display: ${({ type }) => type === "sm" && "flex"};
+  gap: 10px;
 `;
 
 const Image = styled.img`
   width: 100%;
-  height: 202px;
+  height: ${({ type }) => (type === "sm" ? "120px" : "202px")};
   background: #999;
+  flex: 1;
 `;
 
-export const Card = () => {
+export const Card = ({ type }) => {
   return (
     <Link to="/video/test">
-      <Container>
-        <Image src="https://images.mygoodtimes.in/wp-content/uploads/2019/11/08053906/gadar.jpg" />
+      <Container type={type}>
+        <Image
+          type={type}
+          src="https://images.mygoodtimes.in/wp-content/uploads/2019/11/08053906/gadar.jpg"
+        />
 
-        <Details>
-          <ChannelImage src="https://feeds.abplive.com/onecms/images/uploaded-images/2021/10/15/f7be6c3b93c4e246c059e52db6ce8f71_original.jpg" />
+        <Details type={type}>
+          <ChannelImage
+            type={type}
+            src="https://feeds.abplive.com/onecms/images/uploaded-images/2021/10/15/f7be6c3b93c4e246c059e52db6ce8f71_original.jpg"
+          />
 
           <Texts>
             <Title>Ek Prem Katha</Title>
@@ -39,6 +49,7 @@ const Details = styled.div`
   display: flex;
   margin-top: 16px;
   gap: 12px;
+  flex: 1;
 `;
 
 const ChannelImage = styled.img`
@@ -46,6 +57,7 @@ const ChannelImage = styled.img`
   height: 36px;
   border-radius: 50%;
   background: #999;
+  display: ${({ type }) => type === "sm" && "none"};
 `;
 
 const Texts = styled.div``;

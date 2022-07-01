@@ -53,10 +53,12 @@ export const Menu = ({ setDarkMode, darkMode }) => {
         {/* login part */}
         <Login>
           Sign in to like videos, comment and subscribe.
-          <Button>
-            {" "}
-            <AccountCircleIcon /> SIGN IN
-          </Button>
+          <Link to="/login">
+            <Button>
+              {" "}
+              <AccountCircleIcon /> SIGN IN
+            </Button>
+          </Link>
         </Login>
         <Hr />
         <Title>BEST OF SANTUBE</Title>
@@ -133,6 +135,15 @@ const Item = styled.div`
   gap: 20px;
   cursor: pointer;
   padding: 7.5px 0px;
+  transition: 0.5s;
+
+  &:hover {
+    background: ${({ theme }) => theme.soft};
+    transform: translateX(10px);
+    padding: 7.5px 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
 `;
 
 const Hr = styled.hr`

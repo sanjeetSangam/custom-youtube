@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -13,10 +14,12 @@ export const Navbar = () => {
           <SearchIcon />
         </Search>
 
-        <Button>
-          {" "}
-          <AccountCircleIcon /> SIGN IN
-        </Button>
+        <Link to="/login">
+          <Button>
+            {" "}
+            <AccountCircleIcon /> SIGN IN
+          </Button>
+        </Link>
       </Wrapper>
     </Container>
   );
@@ -25,9 +28,8 @@ export const Navbar = () => {
 const Container = styled.div`
   position: sticky;
   top: 0;
-  background: ${({ theme }) => theme.bgLigher};
+  background: ${({ theme }) => theme.bgLighter};
   height: 56px;
-  z-index: 500;
 `;
 
 const Wrapper = styled.div`
